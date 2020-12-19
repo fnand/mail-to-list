@@ -1,6 +1,11 @@
 # MailList
 
-MailList is a plugin for ...
+MailList is a plugin to enable two-way interaction with a mailing list from discord. 
+
+In order fr this plugin to have an effect you need to forst create a mirror of 
+the mailing list (you can use [this guide](https://meta.discourse.org/t/creating-a-read-only-mailing-list-mirror/77990)). 
+
+Additionally, you need a correctly set up SMTP server. 
 
 ## Installation
 
