@@ -10,6 +10,9 @@ register_asset 'stylesheets/common/mail-list.scss'
 register_asset 'stylesheets/desktop/mail-list.scss', :desktop
 register_asset 'stylesheets/mobile/mail-list.scss', :mobile
 
+
+require_relative 'mailing_list_mailer'
+
 enabled_site_setting :mail_list_enabled
 
 PLUGIN_NAME ||= 'MailList'
@@ -20,11 +23,21 @@ after_initialize do
 
   class ListMailer < ActionMailer::Base
     def.self.mail_list(entry)
-
+      # I'm not sure how to access the address, but it is sctored as 
+      # email_in under category: https://github.com/discourse/discourse/blob/a0bbc346cb5d5b89d1a3efdfa89869349a8b067f/spec/fabricators/category_fabricator.rb#L35  	    
+      address = entry.category.email_in
     end
 
     def.self.mail_staged(entry)
-
+      entry.post.users do |address|
+        # Is this line really neccessary? 
+        if address != SiteSetting.pop3_polling_username do
+          user = User.find_by_email(address)
+	  if user.staged do
+	    
+          end
+        end
+      end
     end
   end
 

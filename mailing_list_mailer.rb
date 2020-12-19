@@ -1,7 +1,7 @@
 require 'email'
 require 'email/build_email_helper'
 
-class NewEventMailer < ActionMailer::Base
+class MailingListMailer < ActionMailer::Base
 
   def send_email(template, to_address, target_username, topic)
     if target_username.nil?
