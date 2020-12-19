@@ -1,0 +1,4 @@
+plugins:
+  mail_list_enabled:
+    default: true
+    client: true
